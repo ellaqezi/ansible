@@ -1,0 +1,12 @@
+- hosts: all
+  max_fail_percentage: 0
+  serial: 1
+  tasks:
+  - name: Copy file to server
+    copy: src={{ srcfile }} dest=/tmp/{{ srcfile | basename }}
+  - name: Change password
+    shell: passwd < /tmp/{{ srcfile | basename }}
+  - name: Remove temporary files
+    file: path={{ item.path }} state=absent
+    with_items:
+      - { path: "/tmp/{{ srcfile | basename }}" }
