@@ -1,0 +1,17 @@
+[dev]
+${hosts}
+
+[dev:vars]
+ansible_ssh_user=${ssh_user}
+
+[int]
+${hosts}
+
+[int:vars]
+ansible_ssh_user=${ssh_user}
+
+[prod]
+${hosts}
+
+[prod:vars]
+ansible_ssh_user=${ssh_user}

@@ -1,0 +1,6 @@
+- hosts: dev
+  max_fail_percentage: 0
+  serial: 1
+  tasks:
+  - name: Set up authorized_keys for the {{ ssh_user }} user
+    authorized_key: user={{ ssh_user }} key="{{ lookup('file', '/path/to/pub/key/.ssh/{{ ssh_user }}.pub') }}"
